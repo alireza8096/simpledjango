@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from .tasks import temp
+from .tasks import send_sms_task
 
 
 # Create your views here.
@@ -13,5 +13,5 @@ def send_sms(request):
     phone_number = request.POST['phone_number']
     message_text = request.POST['message_text']
     print(message_text, phone_number)
-    temp.delay()
+    send_sms_task.delay(phone_number, message_text)
     return HttpResponse('ok')
