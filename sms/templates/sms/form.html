@@ -1,0 +1,11 @@
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="http://127.0.0.1:8000/sms/send/" method="post">
+{% csrf_token %}
+	<label>Phone Number</label><br>
+	<input type="text" id="phone_number" name="phone_number"><br>
+	<label>Message Text</label><br>
+	<input type="text" id="message_text" name="message_text"><br>
+<input type="submit" value="Submit">
+</form>
